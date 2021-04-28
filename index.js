@@ -1,5 +1,11 @@
-const _ = require('lodash');
+const { EventEmitter } = require('events');
  
-const myOddEvenArray = _.partition([1, 2, 3, 4, 5, 6], (n) => n % 2);
- 
-console.log(myOddEvenArray);
+const birthdayEventListener = (name) => {
+    console.log(`Happy birthday ${name}!`);
+  }
+   
+const myEmitter = new EventEmitter();
+   
+  myEmitter.on('birthday',birthdayEventListener);
+   
+  myEmitter.emit('birthday','dicoding');
