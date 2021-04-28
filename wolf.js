@@ -8,4 +8,4 @@ class Wolf {
     }
   }
    
-  module.export(Wolf);
+  module.exports = Wolf;

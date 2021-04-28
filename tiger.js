@@ -8,4 +8,4 @@ class Tiger {
     }
   }
    
-module.export = {Tiger}
+module.exports = Tiger
