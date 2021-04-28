@@ -1,21 +1,5 @@
-const Tiger = require('./tiger');
-const Wolf = require('./wolf');
+const _ = require('lodash');
  
-const fighting = (tiger, wolf) => {
-  if(tiger.strength > wolf.strength) {
-    tiger.growl();
-    return;
-  }
+const myOddEvenArray = _.partition([1, 2, 3, 4, 5, 6], (n) => n % 2);
  
-  if(wolf.strength > tiger.strength) {
-    wolf.howl();
-    return;
-  }
- 
-  console.log('Tiger and Wolf have same strength');
-}
- 
-const tiger = new Tiger();
-const wolf = new Wolf();
- 
-fighting(tiger, wolf);
+console.log(myOddEvenArray);
