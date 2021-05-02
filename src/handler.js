@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 const { nanoid } = require('nanoid');
 let books = require('../model/books');
 
@@ -71,6 +72,55 @@ const addBookController = (req, res) => {
 };
 
 const getAllBookController = (req, res) => {
+  const { name, reading, finished } = req.query;
+
+  if (name) {
+    const book = books.filter((b) => b.name.toUpperCase().includes(name.toUpperCase()));
+    res.json({
+      status: 'success',
+      data: {
+        books: book.map((b) => ({
+          id: b.id,
+          name: b.name,
+          publisher: b.publisher,
+        })),
+      },
+    });
+    res.status(200);
+    return res.send();
+  }
+  if (reading || reading === 0) {
+    const book = books.filter((b) => b.reading == reading);
+    res.json({
+      status: 'success',
+      data: {
+        books: book.map((b) => ({
+          id: b.id,
+          name: b.name,
+          publisher: b.publisher,
+        })),
+      },
+    });
+    res.status(200);
+    return res.send();
+  }
+
+  if (finished || finished === 0) {
+    const book = books.filter((b) => b.finished == finished);
+    res.json({
+      status: 'success',
+      data: {
+        books: book.map((b) => ({
+          id: b.id,
+          name: b.name,
+          publisher: b.publisher,
+        })),
+      },
+    });
+    res.status(200);
+    return res.send();
+  }
+  console.log(books);
   res.json({
     status: 'success',
     data: {
