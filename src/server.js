@@ -1,9 +1,13 @@
 const express = require('express');
-const router = require('./route')
+const bodyParser = require('body-parser');
+const router = require('./route');
+
 const app = express();
+app.set('port', 5000);
 
-app.use('/route',router);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+app.use('/', router);
 
-
-app.listen(3000,'0.0.0.0', () => console.log('Server started'));
+app.listen(3000, 'localhost', () => console.log('Server started'));
